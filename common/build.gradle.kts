@@ -52,4 +52,9 @@ dependencies {
 
     debugApi(libs.androidx.ui.tooling)
     debugApi(libs.androidx.ui.test.manifest)
+
+    // navigation
+    api(libs.androidx.navigation.compose)
+    // viewModel compose
+    api(libs.lifecycle.viewmodel.compose)
 }
