@@ -43,7 +43,6 @@ dependencies {
     implementation(project(":common:domain"))
     implementation(project(":common:data"))
     implementation(project(":navigation"))
-    implementation(project(":onboarding"))
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
 }

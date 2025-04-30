@@ -57,4 +57,6 @@ dependencies {
     api(libs.androidx.navigation.compose)
     // viewModel compose
     api(libs.lifecycle.viewmodel.compose)
+    // hilt viewModel compose
+    api(libs.androidx.hilt.navigation.compose)
 }
