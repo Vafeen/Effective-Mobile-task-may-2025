@@ -22,3 +22,4 @@ dependencyResolutionManagement {
 rootProject.name = "EMTask"
 include(":app")
 include(":common")
+include(":common:domain")
