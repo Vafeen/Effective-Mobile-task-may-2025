@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.common.domain"
+    namespace = "com.example.data"
     compileSdk = 36
 
     defaultConfig {
@@ -33,6 +33,7 @@ android {
 }
 
 dependencies {
+    api(project(":common:domain"))
     api(project(":common"))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

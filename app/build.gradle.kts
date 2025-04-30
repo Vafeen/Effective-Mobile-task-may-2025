@@ -40,7 +40,8 @@ android {
 }
 
 dependencies {
-    implementation(project(":common"))
+    implementation(project(":common:domain"))
+    implementation(project(":common:data"))
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
 }

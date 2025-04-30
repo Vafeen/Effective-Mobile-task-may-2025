@@ -23,3 +23,4 @@ rootProject.name = "EMTask"
 include(":app")
 include(":common")
 include(":common:domain")
+include(":common:data")
