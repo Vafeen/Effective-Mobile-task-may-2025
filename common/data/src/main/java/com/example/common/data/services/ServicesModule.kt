@@ -8,7 +8,7 @@ import org.koin.core.module.dsl.bind
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
 
-val ServicesModule = module {
+internal val ServicesModule = module {
     singleOf(::SettingsManagerImpl) {
         bind<SettingsManager>()
     }

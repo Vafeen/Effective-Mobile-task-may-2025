@@ -15,7 +15,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
-import com.example.common.domain.ui.ThemeColor
+import com.example.common.android.ui.ThemeColor
 import com.example.onboarding.Course
 
 @Composable
