@@ -57,4 +57,9 @@ dependencies {
     api(libs.androidx.navigation.compose)
     // viewModel compose
     api(libs.lifecycle.viewmodel.compose)
+    // koin
+    api(libs.koin.android)
+    api(libs.koin.androidx.compose)
+    //serialization
+    api(libs.kotlinx.serialization.json)
 }

@@ -1,19 +1,23 @@
 package com.example.navigation
 
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
 import com.example.common.domain.navigation.Screen
+import com.example.onboarding.OnboardingScreen
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun NavRoot() {
-    val viewModel = viewModel<NavRootViewModel>()
+    val viewModel = koinViewModel<NavRootViewModel>()
     val navController = rememberNavController()
 
     val state by viewModel.state.collectAsState()
@@ -27,11 +31,16 @@ fun NavRoot() {
         }
     }
     state.startDestination?.let { startDestination ->
+        val tween = tween<Float>(durationMillis = 0)
         NavHost(
-            navController = navController, startDestination = startDestination
+            navController = navController, startDestination = startDestination,
+            enterTransition = { fadeIn(animationSpec = tween) },
+            exitTransition = { fadeOut(animationSpec = tween) },
+            popEnterTransition = { fadeIn(animationSpec = tween) },
+            popExitTransition = { fadeOut(animationSpec = tween) },
         ) {
-            composable<Screen.Onboarding> { }
-            composable<Screen.SignUp> { }
+            composable<Screen.Onboarding> { OnboardingScreen(viewModel) }
+            composable<Screen.SignIn> { }
             navigation<Screen.BottomBarScreens>(startDestination = Screen.Main) {
                 composable<Screen.Main> { }
                 composable<Screen.Favourites> { }
