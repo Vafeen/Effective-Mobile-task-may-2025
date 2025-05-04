@@ -22,7 +22,9 @@ dependencyResolutionManagement {
 rootProject.name = "EMTask"
 include(":app")
 include(":common")
-include(":common:domain")
 include(":common:data")
 include(":navigation")
 include(":onboarding")
+include(":sign_in")
+include(":common:android")
+include(":common:domain")

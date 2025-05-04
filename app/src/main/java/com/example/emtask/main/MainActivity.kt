@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import com.example.emtask.ui.theme.EMTaskTheme
+import com.example.common.android.ui.MainTheme
 import com.example.navigation.NavRoot
 
 internal class MainActivity : ComponentActivity() {
@@ -13,7 +13,7 @@ internal class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            EMTaskTheme { NavRoot() }
+            MainTheme { NavRoot() }
         }
     }
 }

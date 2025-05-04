@@ -9,7 +9,6 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.serialization.json.Json
 
-
 /**
  * Реализация интерфейса [SettingsManager] для управления настройками приложения с использованием [SharedPreferences].
  * Этот класс предоставляет реактивный способ наблюдения за изменениями настроек через [StateFlow].

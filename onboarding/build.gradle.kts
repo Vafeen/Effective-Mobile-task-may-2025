@@ -35,6 +35,7 @@ android {
 
 dependencies {
     implementation(project(":common:domain"))
+    api(project(":common:android"))
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
 }

@@ -24,10 +24,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.common.domain.R
+import com.example.android.R
+import com.example.common.android.ui.ThemeColor
 import com.example.common.domain.navigation.Navigator
-import com.example.common.domain.ui.ThemeColor
-import com.example.onboarding.ui_utils.CourseCard
+import com.example.onboarding.components.CourseCard
 import org.koin.androidx.compose.koinViewModel
 import org.koin.core.parameter.parameterSetOf
 
