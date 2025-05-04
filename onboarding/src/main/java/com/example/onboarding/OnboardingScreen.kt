@@ -27,7 +27,7 @@ import androidx.compose.ui.unit.sp
 import com.example.android.R
 import com.example.common.android.ui.ThemeColor
 import com.example.common.domain.navigation.Navigator
-import com.example.onboarding.ui_utils.CourseCard
+import com.example.onboarding.components.CourseCard
 import org.koin.androidx.compose.koinViewModel
 import org.koin.core.parameter.parameterSetOf
 

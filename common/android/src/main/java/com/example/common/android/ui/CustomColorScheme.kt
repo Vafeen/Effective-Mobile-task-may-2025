@@ -7,4 +7,5 @@ data class CustomColorScheme(
     val mainColor: Color,
     val background: Color,
     val text: Color,
+    val textFieldBackground: Color
 )

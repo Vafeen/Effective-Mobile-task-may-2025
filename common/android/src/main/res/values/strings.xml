@@ -2,4 +2,13 @@
 <resources>
     <string name="continue_str">Продолжить</string>
     <string name="sign_in">Вход</string>
+    <string name="email" translatable="false">Email</string>
+    <string name="password">Пароль</string>
+    <string name="test_email" translatable="false">example@gmail.com</string>
+    <string name="enter_password">Введите пароль</string>
+    <string name="no_account">Нету аккаунта?</string>
+    <string name="signing_up">Регистрация</string>
+    <string name="forgot_password">Забыл пароль</string>
+    <string name="vk">ВК</string>
+    <string name="ok">ОК</string>
 </resources>

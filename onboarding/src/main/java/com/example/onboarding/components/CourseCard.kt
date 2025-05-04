@@ -1,4 +1,4 @@
-package com.example.onboarding.ui_utils
+package com.example.onboarding.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box

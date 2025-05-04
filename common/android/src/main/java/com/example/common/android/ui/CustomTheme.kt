@@ -16,11 +16,16 @@ fun MainTheme(
         mainColor = Color(0xFF24252A),
         background = Color.White,
         text = Color.Black,
+        textFieldBackground = Color(0xFFCECFD3)
     )
 
-    val baseDarkPalette = basePalette.copy(background = Color.Black)
+    val baseDarkPalette = basePalette.copy(
+        background = Color.Black,
+        text = Color.White,
+        textFieldBackground = Color(0xFF32333A)
+    )
 
-    val colors = if (darkTheme) {
+    val colors = if (!darkTheme) {
         basePalette
     } else {
         baseDarkPalette

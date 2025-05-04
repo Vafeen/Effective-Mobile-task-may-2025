@@ -2,4 +2,11 @@
 <resources>
     <string name="continue_str">Continue</string>
     <string name="sign_in">Sign in</string>
+    <string name="password">Password</string>
+    <string name="enter_password">Enter a password</string>
+    <string name="no_account">No account?</string>
+    <string name="signing_up">Signing up</string>
+    <string name="forgot_password">Forgot password</string>
+    <string name="vk">VK</string>
+    <string name="ok">OK</string>
 </resources>
