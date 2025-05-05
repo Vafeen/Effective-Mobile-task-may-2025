@@ -22,6 +22,7 @@ import com.example.common.android.navigation.getScreenFromRoute
 import com.example.common.android.ui.CustomTheme
 import com.example.common.domain.navigation.Screen
 import com.example.onboarding.OnboardingScreen
+import com.example.profile.AccountScreen
 import com.example.sign_in.SignInScreen
 import org.koin.androidx.compose.koinViewModel
 
@@ -82,7 +83,7 @@ fun NavRoot() {
                 navigation<Screen.BottomBarScreens>(startDestination = Screen.Main) {
                     composable<Screen.Main> { Text("Main") }
                     composable<Screen.Favourites> { Text("Favourites") }
-                    composable<Screen.Account> { Text("Account") }
+                    composable<Screen.Account> { AccountScreen() }
                 }
             }
         }
