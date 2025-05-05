@@ -9,4 +9,7 @@
     <string name="forgot_password">Forgot password</string>
     <string name="vk">VK</string>
     <string name="ok">OK</string>
+    <string name="home_screen">Home</string>
+    <string name="favourites_screen">Favourites</string>
+    <string name="account_screen">Account</string>
 </resources>

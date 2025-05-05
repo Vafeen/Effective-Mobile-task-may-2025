@@ -11,4 +11,7 @@
     <string name="forgot_password">Забыл пароль</string>
     <string name="vk">ВК</string>
     <string name="ok">ОК</string>
+    <string name="home_screen">Главная</string>
+    <string name="favourites_screen">Избранное</string>
+    <string name="account_screen">Аккаунт</string>
 </resources>
