@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.common.domain.navigation.Navigator
 import com.example.common.domain.navigation.Screen
 import com.example.common.domain.services.SettingsManager
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
@@ -24,6 +25,9 @@ internal class NavRootViewModel(
     )
     val state = _state.asStateFlow()
 
+    val screenWithBottomBar = listOf(
+        Screen.Main, Screen.Favourites, Screen.Account
+    )
     init {
         viewModelScope.launch {
             calculateStartScreen()
@@ -31,8 +35,13 @@ internal class NavRootViewModel(
     }
 
     override fun navigateTo(screen: Screen) {
-        viewModelScope.launch {
-            _effects.emit(NavRootEffect.NavigateToScreen(screen))
+        viewModelScope.launch(Dispatchers.IO) {
+            _effects.emit(NavRootEffect.NavigateToScreen { navHostController ->
+                navHostController.navigate(screen) {
+                    Screen.Main::class.qualifiedName?.let { popUpTo(it) }
+                    launchSingleTop = true
+                }
+            })
         }
     }
 
@@ -47,6 +56,15 @@ internal class NavRootViewModel(
             it.copy(
                 startDestination =
                     if (settingsManager.settingsFlow.value.isOnboardingShowed) Screen.SignIn else Screen.Onboarding
+            )
+        }
+    }
+
+    fun updateCurrentScreen(screen: Screen) {
+        _state.update {
+            it.copy(
+                currentScreen = screen,
+                isBottomBarVisible = screen in screenWithBottomBar
             )
         }
     }
