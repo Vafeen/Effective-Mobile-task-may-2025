@@ -15,6 +15,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
+import com.example.common.android.ui.CustomTheme
 import com.example.common.android.ui.ThemeColor
 import com.example.onboarding.Course
 
@@ -25,7 +26,7 @@ internal fun Course.CourseCard() {
             .rotate(degreesIncline)
             .padding(horizontal = 2.dp, vertical = 4.dp)
             .background(
-                color = if (degreesIncline == 0f) Color.Black.copy(alpha = 0.8f) else ThemeColor.green,
+                color = if (degreesIncline == 0f) CustomTheme.colors.cardColor.copy(alpha = 0.7f) else ThemeColor.green,
                 shape = RoundedCornerShape(50.dp)
             )
             .padding(vertical = 8.dp)
