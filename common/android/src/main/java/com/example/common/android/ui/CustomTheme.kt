@@ -16,13 +16,14 @@ fun MainTheme(
         mainColor = Color(0xFF24252A),
         background = Color.White,
         text = Color.Black,
-        textFieldBackground = Color(0xFFCECFD3)
+        cardColor = Color(0xFFCECFD3),
+        bottomBarIndicatorColor = Color(0xFF32333A)
     )
 
     val baseDarkPalette = basePalette.copy(
         background = Color.Black,
         text = Color.White,
-        textFieldBackground = Color(0xFF32333A)
+        cardColor = Color(0xFF24252A)
     )
 
     val colors = if (!darkTheme) {

@@ -22,6 +22,7 @@ internal class SignInViewModel(private val navigator: Navigator) : ViewModel() {
         // не рекомендовано использовать вообще, поскольку это не идет в бэкап системы, а в SharedPreferences хранить в открытом виде небезопасно
         // да и по тз на этом моменте указано только осуществление перехода на главный экран
         // Надеюсь, минусов за это не будет :)
+        navigator.back()
         navigator.navigateTo(Screen.BottomBarScreens)
     }
 

@@ -34,8 +34,8 @@ fun FieldWithHintComponent(
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(30.dp),
             colors = TextFieldDefaults.colors(
-                focusedContainerColor = CustomTheme.colors.textFieldBackground,
-                unfocusedContainerColor = CustomTheme.colors.textFieldBackground,
+                focusedContainerColor = CustomTheme.colors.cardColor,
+                unfocusedContainerColor = CustomTheme.colors.cardColor,
                 focusedTextColor = CustomTheme.colors.text,
                 unfocusedTextColor = CustomTheme.colors.text,
                 focusedIndicatorColor = Color.Transparent,
