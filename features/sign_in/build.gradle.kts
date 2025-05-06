@@ -1,10 +1,11 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose)
 }
 
 android {
-    namespace = "com.example.data"
+    namespace = "com.example.sign_in"
     compileSdk = 36
 
     defaultConfig {
@@ -33,14 +34,7 @@ android {
 }
 
 dependencies {
-    api(project(":common:domain"))
-    api(project(":common"))
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
+    api(project(":common:android"))
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    // koin
-    api(libs.koin.android)
 }
