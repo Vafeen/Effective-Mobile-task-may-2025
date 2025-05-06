@@ -42,8 +42,6 @@ internal class SettingsManagerImpl(private val sharedPreferences: SharedPreferen
      */
     init {
         sharedPreferences.registerOnSharedPreferenceChangeListener { sharedPreferences, key ->
-            // Эмитим новые настройки, если в SharedPreferences произошло изменение
-            Log.d("sp", "callback")
             _settingsFlow.value = sharedPreferences.getSettingsOrCreateIfNull()
         }
     }
@@ -63,7 +61,8 @@ internal class SettingsManagerImpl(private val sharedPreferences: SharedPreferen
         // Сохраняем обновленные настройки в SharedPreferences
         sharedPreferences.save(settings)
         // Обновляем flow
-        _settingsFlow.value = sharedPreferences.getSettingsOrCreateIfNull()
+        // Обновление здесь идет, потому что callback, который регистрируется выше, не всегда срабатывает.
+        _settingsFlow.value = settings
     }
 
     /**
@@ -98,6 +97,13 @@ internal class SettingsManagerImpl(private val sharedPreferences: SharedPreferen
         }
     }
 
+    /**
+     * Выполняет сохранение данных в [SharedPreferences.Editor].
+     * Позволяет выполнить блок сохранения и применить изменения.
+     *
+     * @receiver Экземпляр [SharedPreferences], в котором будет создан редактор.
+     * @param save Лямбда с действиями для редактора [SharedPreferences.Editor].
+     */
     private fun SharedPreferences.saveInOrRemoveFromSharedPreferences(save: SharedPreferences.Editor.() -> Unit) {
         edit().apply {
             save()
@@ -105,8 +111,21 @@ internal class SettingsManagerImpl(private val sharedPreferences: SharedPreferen
         }
     }
 
+    /**
+     * Выполняет получение данных из [SharedPreferences].
+     *
+     * @receiver Экземпляр [SharedPreferences], из которого происходит чтение.
+     * @param get Лямбда с действиями для получения данных из [SharedPreferences].
+     * @return Результат выполнения лямбды.
+     */
     private fun <T> SharedPreferences.getFromSharedPreferences(get: SharedPreferences.() -> T): T =
         get()
 
+    /**
+     * Сериализует объект [Settings] в JSON-строку.
+     *
+     * @receiver Объект [Settings], который нужно сериализовать.
+     * @return JSON-представление объекта в виде строки.
+     */
     private fun Settings.toJsonString() = Json.encodeToString(this)
 }

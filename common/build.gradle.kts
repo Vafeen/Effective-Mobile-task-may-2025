@@ -62,4 +62,7 @@ dependencies {
     api(libs.koin.androidx.compose)
     //serialization
     api(libs.kotlinx.serialization.json)
+    // retrofit
+    api(libs.retrofit)
+    api(libs.converter.gson)
 }

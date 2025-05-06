@@ -2,6 +2,7 @@ package com.example.emtask.app
 
 import android.app.Application
 import com.example.common.data.di.MainCommonDataModule
+import com.example.main.MainModule
 import com.example.navigation.NavRootModule
 import com.example.onboarding.OnboardingModule
 import com.example.sign_in.SignInModule
@@ -17,7 +18,8 @@ internal class App : Application() {
                 MainCommonDataModule,
                 NavRootModule,
                 OnboardingModule,
-                SignInModule
+                SignInModule,
+                MainModule,
             )
         }
     }

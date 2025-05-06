@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.navigation"
+    namespace = "com.example.main"
     compileSdk = 36
 
     defaultConfig {
@@ -34,9 +34,7 @@ android {
 }
 
 dependencies {
-    api(project(":onboarding"))
-    api(project(":sign_in"))
-    api(project(":main"))
+    api(project(":common:android"))
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
 }
