@@ -81,7 +81,7 @@ fun NavRoot() {
                 composable<Screen.Onboarding> { OnboardingScreen(viewModel) }
                 composable<Screen.SignIn> { SignInScreen(viewModel) }
                 navigation<Screen.BottomBarScreens>(startDestination = Screen.Main) {
-                    composable<Screen.Main> { MainScreen(viewModel) }
+                    composable<Screen.Main> { MainScreen() }
                     composable<Screen.Favourites> { Text("Favourites") }
                     composable<Screen.Account> { Text("Account") }
                 }
