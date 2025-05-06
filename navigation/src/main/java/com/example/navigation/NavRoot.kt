@@ -21,8 +21,8 @@ import com.example.common.android.components.BottomBar
 import com.example.common.android.navigation.getScreenFromRoute
 import com.example.common.android.ui.CustomTheme
 import com.example.common.domain.navigation.Screen
+import com.example.main.MainScreen
 import com.example.onboarding.OnboardingScreen
-import com.example.profile.AccountScreen
 import com.example.sign_in.SignInScreen
 import org.koin.androidx.compose.koinViewModel
 
@@ -40,7 +40,7 @@ fun NavRoot() {
             viewModel.updateCurrentScreen(currentScreen)
         }
     }
-    
+
     LaunchedEffect(null) {
         viewModel.effects.collect { effect ->
             when (effect) {
@@ -81,9 +81,9 @@ fun NavRoot() {
                 composable<Screen.Onboarding> { OnboardingScreen(viewModel) }
                 composable<Screen.SignIn> { SignInScreen(viewModel) }
                 navigation<Screen.BottomBarScreens>(startDestination = Screen.Main) {
-                    composable<Screen.Main> { Text("Main") }
+                    composable<Screen.Main> { MainScreen(viewModel) }
                     composable<Screen.Favourites> { Text("Favourites") }
-                    composable<Screen.Account> { AccountScreen() }
+                    composable<Screen.Account> { Text("Account") }
                 }
             }
         }

@@ -36,7 +36,6 @@ android {
 dependencies {
     api(project(":onboarding"))
     api(project(":sign_in"))
-    api(project(":account"))
     api(project(":main"))
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
