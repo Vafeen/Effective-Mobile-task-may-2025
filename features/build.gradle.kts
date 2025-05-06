@@ -11,10 +11,3 @@ kotlin {
         jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11
     }
 }
-dependencies {
-    //serialization
-    api(libs.kotlinx.serialization.json)
-    // retrofit
-    api(libs.retrofit)
-    api(libs.converter.gson)
-}

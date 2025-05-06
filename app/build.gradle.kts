@@ -42,7 +42,7 @@ android {
 dependencies {
     implementation(project(":common:domain"))
     implementation(project(":common:data"))
-    implementation(project(":navigation"))
+    implementation(project(":features:navigation"))
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
 }
