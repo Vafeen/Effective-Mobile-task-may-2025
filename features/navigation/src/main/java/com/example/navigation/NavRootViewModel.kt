@@ -28,6 +28,7 @@ internal class NavRootViewModel(
     val screenWithBottomBar = listOf(
         Screen.Main, Screen.Favourites, Screen.Account
     )
+
     init {
         viewModelScope.launch {
             calculateStartScreen()
@@ -52,10 +53,14 @@ internal class NavRootViewModel(
     }
 
     private fun calculateStartScreen() {
+        val settings = settingsManager.settingsFlow.value
         _state.update {
             it.copy(
-                startDestination =
-                    if (settingsManager.settingsFlow.value.isOnboardingShowed) Screen.SignIn else Screen.Onboarding
+                startDestination = when {
+                    !settings.isOnboardingShowed -> Screen.Onboarding
+                    !settings.isSignedIn -> Screen.SignIn
+                    else -> Screen.BottomBarScreens
+                }
             )
         }
     }

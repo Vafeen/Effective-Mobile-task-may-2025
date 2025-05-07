@@ -6,6 +6,6 @@ import org.koin.dsl.module
 
 val SignInModule = module {
     viewModel<SignInViewModel> { (navigator: Navigator) ->
-        SignInViewModel(navigator)
+        SignInViewModel(navigator, get())
     }
 }
