@@ -18,4 +18,5 @@ dependencies {
     api(libs.kotlinx.coroutines.core)
     //serialization
     api(libs.kotlinx.serialization.json)
+    testImplementation(kotlin("test"))
 }
