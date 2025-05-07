@@ -15,7 +15,7 @@ internal class RoomCoursesLocalRepository(db: AppDatabase) : CoursesLocalReposit
         course.forEach { courseDao.insert(it.toEntity()) }
     }
 
-    override suspend fun delete(course: List<Course>) {
-        course.forEach { courseDao.delete(it.toEntity()) }
+    override suspend fun delete(courses: List<Course>) {
+        courses.forEach { courseDao.delete(it.toEntity()) }
     }
 }

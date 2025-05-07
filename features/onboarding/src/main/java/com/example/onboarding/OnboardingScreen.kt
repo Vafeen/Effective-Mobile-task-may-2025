@@ -24,6 +24,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.android.R
+import com.example.common.android.ui.CustomTheme
 import com.example.common.android.ui.ThemeColor
 import com.example.common.domain.navigation.Navigator
 import com.example.onboarding.components.CourseCard
@@ -46,7 +47,8 @@ fun OnboardingScreen(navigator: Navigator) {
     ) {
         Text(
             modifier = Modifier.padding(top = 140.dp),
-            text = "Тысячи курсов\nв одном месте", fontSize = 28.sp
+            text = stringResource(R.string.thousand_courses), fontSize = 28.sp,
+            color = CustomTheme.colors.text
         )
         LazyHorizontalStaggeredGrid(
             state = gridState,
