@@ -8,7 +8,7 @@ import com.example.common.domain.models.Course
  *
  * Использует [ResponseResult] для обработки успешных и ошибочных состояний.
  */
-interface CoursesRepository {
+interface CoursesNetworkRepository {
     /**
      * Получает список всех доступных курсов.
      *

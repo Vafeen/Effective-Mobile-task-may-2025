@@ -1,26 +1,26 @@
 package com.example.common.data.network
 
-import com.example.common.data.converters.toCourse
+import com.example.common.data.converters.dtoToModel
 import com.example.common.data.data_models.courses_service.CourseDto
 import com.example.common.data.services.courses_service.RetrofitCoursesService
 import com.example.common.domain.models.Course
-import com.example.common.domain.network.CoursesRepository
+import com.example.common.domain.network.CoursesNetworkRepository
 import com.example.common.domain.network.ResponseResult
 
 /**
- * Реализация [CoursesRepository] для работы с данными курсов через Retrofit.
+ * Реализация [CoursesNetworkRepository] для работы с данными курсов через Retrofit.
  *
  * Преобразует данные из сетевого слоя ([CourseDto]) в доменные модели ([Course]).
  * Обрабатывает все возможные ошибки сети и преобразования данных.
  *
  * @property retrofitCoursesService сервис для выполнения сетевых запросов к API курсов
- * @see CoursesRepository интерфейс, который реализует данный класс
+ * @see CoursesNetworkRepository интерфейс, который реализует данный класс
  * @see ResponseResult обертка для обработки успешных и ошибочных результатов
  */
-internal class RetrofitCoursesRepository(
+internal class RetrofitCoursesNetworkRepository(
     /** Retrofit-сервис для выполнения запросов к API курсов */
     private val retrofitCoursesService: RetrofitCoursesService
-) : CoursesRepository {
+) : CoursesNetworkRepository {
 
     /**
      * Получает список всех курсов из сети.
@@ -39,7 +39,7 @@ internal class RetrofitCoursesRepository(
     override suspend fun getAllCourses(): ResponseResult<List<Course>> =
         getResponseResultWrappedAllErrors {
             ResponseResult.Success(
-                (retrofitCoursesService.getAll().body()?.courses as List<CourseDto>).toCourse()
+                (retrofitCoursesService.getAll().body()?.courses as List<CourseDto>).dtoToModel()
             )
         }
 }

@@ -73,7 +73,7 @@ fun MainScreen() {
                         readOnly = true, // по тз этот элемент не функционирует
                         leadingIcon = {
                             Icon(
-                                painter = painterResource(com.example.android.R.drawable.search),
+                                painter = painterResource(R.drawable.search),
                                 contentDescription = stringResource(com.example.android.R.string.search),
                                 tint = CustomTheme.colors.text,
                             )
@@ -134,7 +134,7 @@ fun MainScreen() {
                         .weight(1f)
                 ) {
                     items(items = state.courses, key = { it.id }) { course ->
-                        course.CourseCard()
+                        course.CourseCard(onUpdateFavourites = { viewModel.updateFavourites(course) })
                     }
                 }
             }
