@@ -7,7 +7,9 @@ import com.example.android.R
 import com.example.common.domain.coroutines.EditableDispatchers
 import com.example.common.domain.models.Course
 import com.example.common.domain.network.ResponseResult
-import com.example.common.domain.usecase.GetAllCoursesUseCase
+import com.example.common.domain.usecase.FetchDataAndUpdateDbUseCase
+import com.example.common.domain.usecase.GetAllCoursesFromLocalDatabaseUseCase
+import com.example.common.domain.usecase.InsertCoursesInLocalDatabaseUseCase
 import com.example.common.utils.parseToDate
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -16,8 +18,10 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 internal class MainViewModel(
-    private val getAllCoursesUseCase: GetAllCoursesUseCase,
     private val editableDispatchers: EditableDispatchers,
+    private val fetchDataAndUpdateDbUseCase: FetchDataAndUpdateDbUseCase,
+    private val getAllCoursesFromLocalDatabaseUseCase: GetAllCoursesFromLocalDatabaseUseCase,
+    private val insertCoursesInLocalDatabaseUseCase: InsertCoursesInLocalDatabaseUseCase,
     context: Application
 ) : ViewModel() {
     private val _state = MutableStateFlow(
@@ -31,18 +35,22 @@ internal class MainViewModel(
     private val error = context.getString(R.string.error)
 
     init {
+        viewModelScope.launch(editableDispatchers.ioDispatcher) {
+            getAllCoursesFromLocalDatabaseUseCase.invoke().collect { courses ->
+                _state.update { it.copy(courses = courses) }
+            }
+        }
         fetchData()
     }
 
     fun fetchData() {
         viewModelScope.launch(editableDispatchers.ioDispatcher) {
             _state.update { it.copy(isLoading = true, error = null) }
-            val result = getAllCoursesUseCase.invoke()
+            val result = fetchDataAndUpdateDbUseCase.invoke()
             when (result) {
-                is ResponseResult.Success<List<Course>> -> {
+                is ResponseResult.Success<Any> -> {
                     _state.update {
                         it.copy(
-                            courses = result.data,
                             error = null,
                             isLoading = false
                         )
@@ -82,6 +90,12 @@ internal class MainViewModel(
                     else -> it
                 }
             }
+        }
+    }
+
+    fun updateFavourites(course: Course) {
+        viewModelScope.launch(editableDispatchers.ioDispatcher) {
+            insertCoursesInLocalDatabaseUseCase.invoke(course.copy(hasLike = !course.hasLike))
         }
     }
 }

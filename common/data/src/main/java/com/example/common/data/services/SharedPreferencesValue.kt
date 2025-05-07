@@ -1,5 +1,5 @@
 package com.example.common.data.services
 
-object SharedPreferencesValue {
+internal object SharedPreferencesValue {
     const val NAME = "EM-Task-Shared-Preferences"
 }

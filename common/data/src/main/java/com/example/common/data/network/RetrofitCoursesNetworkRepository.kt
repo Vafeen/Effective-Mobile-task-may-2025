@@ -1,6 +1,6 @@
 package com.example.common.data.network
 
-import com.example.common.data.converters.toCourse
+import com.example.common.data.converters.dtoToModel
 import com.example.common.data.data_models.courses_service.CourseDto
 import com.example.common.data.services.courses_service.RetrofitCoursesService
 import com.example.common.domain.models.Course
@@ -39,7 +39,7 @@ internal class RetrofitCoursesNetworkRepository(
     override suspend fun getAllCourses(): ResponseResult<List<Course>> =
         getResponseResultWrappedAllErrors {
             ResponseResult.Success(
-                (retrofitCoursesService.getAll().body()?.courses as List<CourseDto>).toCourse()
+                (retrofitCoursesService.getAll().body()?.courses as List<CourseDto>).dtoToModel()
             )
         }
 }
