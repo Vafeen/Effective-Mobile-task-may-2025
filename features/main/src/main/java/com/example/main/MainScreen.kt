@@ -74,7 +74,7 @@ fun MainScreen() {
                         leadingIcon = {
                             Icon(
                                 painter = painterResource(R.drawable.search),
-                                contentDescription = stringResource(com.example.android.R.string.search),
+                                contentDescription = stringResource(R.string.search),
                                 tint = CustomTheme.colors.text,
                             )
                         },
@@ -102,8 +102,8 @@ fun MainScreen() {
                             .size(56.dp),
                         onClick = {}) {
                         Icon(
-                            painter = painterResource(com.example.android.R.drawable.filter),
-                            contentDescription = stringResource(com.example.android.R.string.filter),
+                            painter = painterResource(R.drawable.filter),
+                            contentDescription = stringResource(R.string.filter),
                             tint = CustomTheme.colors.text,
                         )
                     }

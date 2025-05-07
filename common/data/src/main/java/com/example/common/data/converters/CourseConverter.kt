@@ -7,7 +7,14 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
 internal fun CourseDto.dtoToModel() =
-    Course(id, title, text, price, rate, startDate, hasLike, publishDate)
+    Course(
+        id, title, text, price, rate, startDate,
+//        hasLike, // убрал здесь это поле, чтобы не получалось так,
+        // что по тз у пользователя уже после регистрации есть курсы в избранном,
+        // и вместо него возвращаю курс без лайка
+        false,
+        publishDate
+    )
 
 internal fun List<CourseDto>.dtoToModel() = this.map { it.dtoToModel() }
 internal fun CourseEntity.entityToModel() =

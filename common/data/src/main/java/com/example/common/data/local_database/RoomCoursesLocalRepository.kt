@@ -8,13 +8,14 @@ import kotlinx.coroutines.flow.Flow
 
 internal class RoomCoursesLocalRepository(db: AppDatabase) : CoursesLocalRepository {
     private val courseDao = db.courseDao()
+
     override fun getAll(): Flow<List<Course>> = courseDao.getAll().toCourseFlow()
 
-    override suspend fun insert(vararg course: Course) {
+    override suspend fun insert(course: List<Course>) {
         course.forEach { courseDao.insert(it.toEntity()) }
     }
 
-    override suspend fun delete(vararg course: Course) {
+    override suspend fun delete(course: List<Course>) {
         course.forEach { courseDao.delete(it.toEntity()) }
     }
 }
