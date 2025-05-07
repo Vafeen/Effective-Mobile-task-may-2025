@@ -11,21 +11,21 @@ interface CoursesLocalRepository {
     /**
      * Получает поток со списком всех курсов из локального хранилища.
      *
-     * @return [Flow] с текущим списком курсов, обновляющийся при изменениях.
+     * @return [Flow] с текущим списком курсов, который обновляется при изменениях данных.
      */
     fun getAll(): Flow<List<Course>>
 
     /**
-     * Вставляет один или несколько курсов в локальное хранилище.
+     * Вставляет список курсов в локальное хранилище.
      *
-     * @param course Один или несколько объектов [Course] для вставки.
+     * @param courses Список объектов [Course] для вставки.
      */
-    suspend fun insert(vararg course: Course)
+    suspend fun insert(courses: List<Course>)
 
     /**
-     * Удаляет один или несколько курсов из локального хранилища.
+     * Удаляет список курсов из локального хранилища.
      *
-     * @param course Один или несколько объектов [Course] для удаления.
+     * @param courses Список объектов [Course] для удаления.
      */
-    suspend fun delete(vararg course: Course)
+    suspend fun delete(courses: List<Course>)
 }

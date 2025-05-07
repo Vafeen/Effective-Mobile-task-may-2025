@@ -1,4 +1,4 @@
-package com.example.android
+package com.example.common
 
 import org.junit.Assert.assertEquals
 import org.junit.Test
