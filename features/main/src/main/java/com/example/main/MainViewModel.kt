@@ -95,7 +95,7 @@ internal class MainViewModel(
 
     fun updateFavourites(course: Course) {
         viewModelScope.launch(editableDispatchers.ioDispatcher) {
-            insertCoursesInLocalDatabaseUseCase.invoke(course.copy(hasLike = !course.hasLike))
+            insertCoursesInLocalDatabaseUseCase.invoke(listOf(course.copy(hasLike = !course.hasLike)))
         }
     }
 }
