@@ -81,7 +81,10 @@ fun SignInScreen(navigator: Navigator) {
                 .fillMaxWidth(1f)
                 .padding(top = 24.dp),
             onClick = viewModel::signIn,
-            colors = ButtonDefaults.buttonColors(containerColor = ThemeColor.green)
+            colors = ButtonDefaults.buttonColors(
+                containerColor = ThemeColor.green,
+                disabledContainerColor = CustomTheme.colors.cardColor
+            )
         ) {
             Text(stringResource(R.string.sign_in), color = Color.White)
         }

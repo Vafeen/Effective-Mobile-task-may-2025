@@ -17,6 +17,9 @@ import com.example.android.R
 import com.example.common.android.ui.CustomTheme
 import com.example.common.android.ui.ThemeColor
 
+/**
+ * Компонент, отвечающий за переход на экраны регистрации и формы восстановления пароля
+ */
 @Composable
 fun ActionsComponent(
     modifier: Modifier = Modifier,
