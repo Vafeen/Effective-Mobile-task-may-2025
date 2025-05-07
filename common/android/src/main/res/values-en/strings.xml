@@ -22,4 +22,5 @@
     <string name="rate">Rating</string>
     <string name="error">Something went wrong\nTap to screen\nto update</string>
     <string name="pull_to_refresh">Pull to refresh</string>
+    <string name="thousand_courses">Thousands of courses\nin one place</string>
 </resources>
