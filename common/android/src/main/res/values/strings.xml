@@ -22,7 +22,7 @@
     <string name="add_to_favourites">Добавить в избранное</string>
     <string name="more_details">Подробнее</string>
     <string name="rate">рейтинг</string>
-    <string name="error">Что-то пошло не так\nНажмите на экран\nдля обновления</string>
+    <string name="error">Что-то пошло не так\nПотяните экран вниз\nдля обновления</string>
     <string name="pull_to_refresh">Потяните вверх для обновления</string>
     <string name="thousand_courses">"Тысячи курсов\nв одном месте"</string>
 </resources>
