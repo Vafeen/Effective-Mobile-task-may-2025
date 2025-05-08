@@ -60,8 +60,7 @@ fun MainScreen() {
             state.error?.let {
                 ErrorComponent(
                     modifier = Modifier.fillMaxSize(),
-                    errorMessage = it,
-                    refresh = { viewModel.fetchData() }
+                    errorMessage = it
                 )
             }
             if (state.error == null && !state.isLoading) {
