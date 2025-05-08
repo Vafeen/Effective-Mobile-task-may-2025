@@ -19,6 +19,14 @@ import com.example.common.android.ui.CustomTheme
 import com.example.common.android.ui.ThemeColor
 import com.example.onboarding.Course
 
+/**
+ * Компонент для отображения карточки курса с визуальным эффектом наклона.
+ *
+ * Визуальные особенности:
+ * - Если угол наклона равен 0, фон карточки полупрозрачный цвет из темы.
+ * - Если угол наклона не равен 0, фон зелёный ([ThemeColor.green]).
+ * - Закруглённые края с радиусом 50.dp.
+ */
 @Composable
 internal fun Course.CourseCard() {
     Box(

@@ -1,5 +1,17 @@
 package com.example.common.data.data_models.courses_service
 
+/**
+ * DTO  курса.
+ *
+ * @property id уникальный идентификатор курса.
+ * @property title название курса.
+ * @property text описание курса.
+ * @property price цена курса.
+ * @property rate рейтинг курса.
+ * @property startDate дата начала курса.
+ * // @property hasLike поле, отвечающее за наличие лайка
+ * @property publishDate дата публикации курса.
+ */
 internal data class CourseDto(
     val id: Int,
     val title: String,
