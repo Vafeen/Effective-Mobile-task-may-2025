@@ -13,28 +13,52 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
+/**
+ * ViewModel для управления навигацией в корневом навигационном графе приложения.
+ *
+ * Реализует интерфейс [Navigator] для управления переходами между экранами.
+ *
+ * @property settingsManager менеджер настроек пользователя, используется для определения стартового экрана.
+ */
 internal class NavRootViewModel(
     private val settingsManager: SettingsManager,
 ) : ViewModel(), Navigator {
+
+    /** Поток эффектов навигации, таких как переходы между экранами */
     private val _effects = MutableSharedFlow<NavRootEffect>()
+
+    /** Публичный поток эффектов навигации для подписки */
     val effects = _effects.asSharedFlow()
+
+    /** Внутренний поток состояния навигации */
     private val _state = MutableStateFlow(
         NavRootState(
             startDestination = Screen.Onboarding
         )
     )
+
+    /** Публичный поток состояния навигации */
     val state = _state.asStateFlow()
 
+    /** Список экранов, для которых отображается нижняя панель навигации */
     val screenWithBottomBar = listOf(
         Screen.Main, Screen.Favourites, Screen.Account
     )
 
     init {
-        viewModelScope.launch {
-            calculateStartScreen()
-        }
+        // Вычисляем стартовый экран при инициализации ViewModel
+        calculateStartScreen()
     }
 
+    /**
+     * Выполняет навигацию к указанному экрану.
+     *
+     * @param screen экран, к которому нужно перейти.
+     *
+     * Логика работы:
+     * 1. Отправляет эффект навигации с переходом к экрану.
+     * 2. При переходе выполняет popUpTo до главного экрана и устанавливает launchSingleTop для избежания дублирования.
+     */
     override fun navigateTo(screen: Screen) {
         viewModelScope.launch(Dispatchers.IO) {
             _effects.emit(NavRootEffect.NavigateToScreen { navHostController ->
@@ -46,12 +70,23 @@ internal class NavRootViewModel(
         }
     }
 
+    /**
+     * Обрабатывает действие "назад" в навигации.
+     */
     override fun back() {
         viewModelScope.launch {
             _effects.emit(NavRootEffect.Back)
         }
     }
 
+    /**
+     * Вычисляет стартовый экран приложения на основе настроек пользователя.
+     *
+     * Логика работы:
+     * - Если онбординг не показан, стартовый экран - Onboarding.
+     * - Если пользователь не вошёл в систему - экран входа SignIn.
+     * - Иначе - главный экран с нижней панелью BottomBarScreens.
+     */
     private fun calculateStartScreen() {
         val settings = settingsManager.settingsFlow.value
         _state.update {
@@ -65,6 +100,11 @@ internal class NavRootViewModel(
         }
     }
 
+    /**
+     * Обновляет текущий отображаемый экран и видимость нижней панели навигации.
+     *
+     * @param screen текущий экран.
+     */
     fun updateCurrentScreen(screen: Screen) {
         _state.update {
             it.copy(

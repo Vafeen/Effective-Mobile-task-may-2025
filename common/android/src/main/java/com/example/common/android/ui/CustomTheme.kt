@@ -38,7 +38,14 @@ fun MainTheme(
     )
 }
 
+
+/**
+ * Объект для доступа к текущей пользовательской цветовой схеме темы.
+ */
 object CustomTheme {
+    /**
+     * Текущая пользовательская цветовая схема.
+     */
     val colors: CustomColorScheme
         @Composable
         get() = LocalColors.current
